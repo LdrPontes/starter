@@ -11,7 +11,7 @@ void startGetItModules() {
 }
 
 void _networkModules() {
-  final helper = DioHelper(env['BASE_URL']!)..addInterceptor(AuthInterceptor());
-  
-  getIt.registerSingleton<Dio>(helper.dio);
+  getIt.registerSingleton<Dio>(
+    DioHelper(env['BASE_URL']!).addInterceptor(AuthInterceptor()).dio,
+  );
 }

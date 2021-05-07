@@ -22,7 +22,9 @@ class DioHelper {
     _dio = Dio(_options);
   }
 
-  void addInterceptor(Interceptor interceptor) {
+  DioHelper addInterceptor(Interceptor interceptor) {
     _dio.interceptors.add(interceptor);
+
+    return this;
   }
 }
