@@ -1,14 +1,14 @@
 import 'package:dio/dio.dart';
 
-class DioHelper {
+class HttpHelper {
   final String _url;
   late final BaseOptions _options;
   late final Dio _dio;
   Dio get dio => _dio;
 
-  DioHelper(this._url) {
+  HttpHelper(this._url) {
     _buildBaseOptions();
-    _buildDio();
+    _buildHttp();
   }
 
   void _buildBaseOptions() {
@@ -18,11 +18,11 @@ class DioHelper {
     );
   }
 
-  void _buildDio() {
+  void _buildHttp() {
     _dio = Dio(_options);
   }
 
-  DioHelper addInterceptor(Interceptor interceptor) {
+  HttpHelper addInterceptor(Interceptor interceptor) {
     _dio.interceptors.add(interceptor);
 
     return this;

@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart' as dot_env;
-import 'di/modules.dart';
+import 'package:get_it/get_it.dart';
+import 'package:starter/constants/colors.dart';
+import 'package:starter/core/di/modules.dart';
+import 'package:starter/core/navigators/route_navigator.dart';
+import 'package:starter/modules/home/screens/home_screen.dart';
 
 Future main() async {
   await dot_env.load();
@@ -13,35 +17,20 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      title: 'Starter',
+      theme: _theme(),
+      navigatorKey: GetIt.I.get<RouteNavigator>().navigatorKey,
+      home: HomeScreen(),
     );
   }
-}
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key, required this.title}) : super(key: key);
-
-  final String title;
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Text("Welcome"),
-      ),
+  ThemeData _theme() {
+    return ThemeData(
+      primaryColor: kPrimaryColor,
+      primaryColorDark: kPrimaryColorDark,
+      primaryColorLight: kPrimaryColorLight,
+      accentColor: kPrimaryColorLight,
+      canvasColor: kCanvasColor,
     );
   }
 }
