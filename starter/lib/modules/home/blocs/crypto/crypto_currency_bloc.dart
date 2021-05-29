@@ -29,11 +29,9 @@ class CryptoCurrencyBloc extends Bloc<CryptoCurrencyEvent, CryptoCurrencyState> 
       final result = await _repository.getCryptoCurrencies();
 
       yield CryptoCurrencySuccess(result);
-    
+
     } catch (error) {
       yield CryptoCurrencyError();
-    } finally {
-      yield CryptoCurrencyLoading(true);
     }
   }
 }

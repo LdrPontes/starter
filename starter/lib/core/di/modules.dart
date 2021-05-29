@@ -5,14 +5,17 @@ import 'package:starter/core/navigators/route_navigator.dart';
 import 'package:starter/interfaces/http.dart';
 import 'package:starter/middlewares/auth_interceptor.dart';
 import 'package:starter/modules/home/blocs/crypto/crypto_currency_bloc.dart';
-import 'package:starter/modules/home/repositories/crypto_currency_repository_impl.dart';
+import 'package:starter/modules/home/data/datasource/remote/currency_service.dart';
+import 'package:starter/modules/home/data/repositories/crypto_currency_repository_impl.dart';
 import 'package:starter/modules/home/domain/repositories/crypto_currency_repository.dart';
+import 'package:starter/modules/home/external/currency_service_impl.dart';
 
 GetIt getIt = GetIt.instance;
 
 void startGetItModules() {
-  _networkModules();
   _navigatorModules();
+  _networkModules();
+  _serviceModules();
   _repositoryModules();
   _blocModules();
 }
@@ -23,16 +26,18 @@ void _networkModules() {
   );
 }
 
+void _serviceModules() {
+  getIt.registerSingleton<CurrencyService>(CurrencyServiceImpl(GetIt.I.get<Dio>()));
+}
+
 void _repositoryModules() {
-  getIt.registerFactory<CryptoCurrencyRepository>(() => CryptoCurrencyRepositoryImpl());
+  getIt.registerSingleton<CryptoCurrencyRepository>(CryptoCurrencyRepositoryImpl(GetIt.I.get<CurrencyService>()));
 }
 
 void _blocModules() {
-  getIt.registerSingletonWithDependencies<CryptoCurrencyBloc>(
-      () => CryptoCurrencyBloc(GetIt.I.get<CryptoCurrencyRepository>()),
-      dependsOn: [CryptoCurrencyRepository]);
+  getIt.registerSingleton<CryptoCurrencyBloc>( CryptoCurrencyBloc(GetIt.I.get<CryptoCurrencyRepository>()));
 }
 
 void _navigatorModules() {
-  getIt.registerLazySingleton(() => RouteNavigator());
+  getIt.registerLazySingleton<RouteNavigator>(() => RouteNavigator());
 }
