@@ -8,11 +8,11 @@ import 'package:starter/components/organisms/crypto_currency_list.dart';
 import 'package:starter/modules/home/blocs/crypto/crypto_currency_bloc.dart';
 
 class HomeScreen extends StatelessWidget {
-  final bloc = GetIt.I.get<CryptoCurrencyBloc>();
+  final CryptoCurrencyBloc _bloc = GetIt.I.get<CryptoCurrencyBloc>();
 
   @override
   Widget build(BuildContext context) {
-    bloc.add(GetCryptoCurrenciesEvent());
+    _bloc.add(GetCryptoCurrenciesEvent());
 
     return Scaffold(
       appBar: AppBar(
@@ -29,6 +29,7 @@ class HomeScreen extends StatelessWidget {
 
   Widget _body() {
     return BlocBuilder<CryptoCurrencyBloc, CryptoCurrencyState>(
+      bloc: _bloc,
       builder: (context, state) {
         if (state is CryptoCurrencyLoading) {
           return ScreenLoader();
@@ -40,7 +41,7 @@ class HomeScreen extends StatelessWidget {
           return ScreenError(
             title: 'Error on load data',
             message: 'Unable to load cryptocurrency information',
-            onPressTryAgain: () => bloc.add(GetCryptoCurrenciesEvent()),
+            onPressTryAgain: () => _bloc.add(GetCryptoCurrenciesEvent()),
           );
         }
         return Container();
