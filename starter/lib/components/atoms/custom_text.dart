@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:starter/constants/colors.dart';
 
 enum CustomTextStyle { SMALL, REGULAR_LIGHT, REGULAR, BOLD_SMALL, BOLD_MEDIUM, BOLD_BIG, TITLE_SMALL, TITLE_MEDIUM }
 
@@ -56,13 +55,13 @@ class CustomText extends StatelessWidget {
         return TextStyle(
           fontSize: 14,
           height: 1.4,
-          color: kTextGreyDark,
+          // color: kTextGreyDark,
         );
       case CustomTextStyle.REGULAR:
         return TextStyle(
           fontSize: 16.0,
           height: 1.5,
-          color: kTextGreyDark,
+          // color: kTextGreyDark,
         );
       case CustomTextStyle.BOLD_SMALL:
         return TextStyle(
@@ -81,21 +80,21 @@ class CustomText extends StatelessWidget {
           fontSize: 18.0,
           fontWeight: FontWeight.bold,
           height: 1.3,
-          color: kTextGreyDark,
+          // color: kTextGreyDark,
         );
       case CustomTextStyle.TITLE_SMALL:
         return TextStyle(
           fontSize: 20.0,
           fontWeight: FontWeight.bold,
           height: 2.0,
-          color: kTitleColor,
+          // color: kTitleColor,
         );
       case CustomTextStyle.TITLE_MEDIUM:
         return TextStyle(
           fontSize: 24.0,
           fontWeight: FontWeight.bold,
           height: 1.6,
-          color: kTitleColor,
+          // color: kTitleColor,
         );
     }
   }

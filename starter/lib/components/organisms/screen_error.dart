@@ -49,7 +49,7 @@ class ScreenError extends StatelessWidget {
               child: CustomText(
                 'Try Again',
                 style: CustomTextStyle.REGULAR,
-                color: kWhite,
+                // color: kWhite,
               ),
             )
           ],

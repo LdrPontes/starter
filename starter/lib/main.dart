@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
       primaryColorDark: kPrimaryColorDark,
       primaryColorLight: kPrimaryColorLight,
       accentColor: kPrimaryColorLight,
-      canvasColor: kCanvasColor,
+      // canvasColor: kCanvasColor,
     );
   }
 }
