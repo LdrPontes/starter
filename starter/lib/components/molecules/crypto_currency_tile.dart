@@ -27,17 +27,17 @@ class CryptoCurrencyTile extends StatelessWidget {
               ),
             ),
             child: Center(
-              child: CustomText(
-                _currency.symbol,
-                style: CustomTextStyle.SMALL,
-                color: kPrimaryColor,
-              ),
+              // child: CustomText(
+              //   _currency.symbol,
+              //   style: CustomTextStyle.SMALL,
+              //   color: kPrimaryColor,
+              // ),
             ),
           ),
-          title: CustomText(
-           _currency.id,
-            style: CustomTextStyle.REGULAR,
-          ),
+          // title: CustomText(
+          //  _currency.id,
+          //   style: CustomTextStyle.REGULAR,
+          // ),
         ),
         Divider(
           height: 2,

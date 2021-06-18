@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:starter/components/atoms/custom_text.dart';
+import 'package:starter/components/atoms/custom_title.dart';
 import 'package:starter/constants/colors.dart';
 
 class ScreenError extends StatelessWidget {
@@ -30,25 +31,25 @@ class ScreenError extends StatelessWidget {
             SizedBox(
               height: 24,
             ),
-            CustomText(_title, style: CustomTextStyle.TITLE_MEDIUM),
+            CustomTitle(text: _title, textStyle: TitleStyle.Page.style),
             SizedBox(
               height: 8,
             ),
-            CustomText(
-              _message,
-              style: CustomTextStyle.REGULAR,
-              wrap: true,
-              textAlign: TextAlign.center,
-            ),
+            // CustomText(
+            //   _message,
+            //   style: CustomTextStyle.REGULAR,
+            //   wrap: true,
+            //   textAlign: TextAlign.center,
+            // ),
             SizedBox(
               height: 24,
             ),
             MaterialButton(
               onPressed: _onPressTryAgain,
               color: kPrimaryColor,
-              child: CustomText(
-                'Try Again',
-                style: CustomTextStyle.REGULAR,
+              child: CustomTitle(
+                text: 'Try Again',
+                textStyle: TitleStyle.Section.style,
                 // color: kWhite,
               ),
             )

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
-import 'package:starter/components/atoms/custom_text.dart';
+import 'package:starter/components/atoms/custom_title.dart';
 import 'package:starter/components/atoms/screen_loader.dart';
 import 'package:starter/components/organisms/screen_error.dart';
 import 'package:starter/components/organisms/crypto_currency_list.dart';
@@ -16,11 +16,9 @@ class HomeScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: CustomText(
-          'Welcome to Starter Template',
-          style: CustomTextStyle.TITLE_SMALL,
-          textAlign: TextAlign.center,
-          color: Colors.white,
+        title: CustomTitle(
+          text: 'Welcome to Starter Template',
+          textStyle: TitleStyle.Page.style,
         ),
       ),
       body: _body(),
